@@ -53,7 +53,7 @@ async def read_books_by_author_category(author: str,category: str):
     return books_to_return
 
 
-# example of path parameter
+# example of path parameters
 @app.get('/books/author/{author}')
 async def get_author_books(author: str):
 
