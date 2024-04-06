@@ -70,6 +70,19 @@ async def get_author_books(author: str):
     return data
 
 
+@app.post('/books/create_book')
+async def create_book(new_book=Body()):
+    BOOKS.append(new_book)
+
+
+@app.put('/books/update_book')
+async def update_book(update_book=Body()):
+
+    for i, book in enumerate(BOOKS):
+        if book['title'].lower() == update_book['title'].lower():
+            BOOKS[i] = update_book
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run('main:app', host="127.0.0.1", port=8000, reload=True)
