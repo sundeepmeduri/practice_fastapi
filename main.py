@@ -82,6 +82,13 @@ async def update_book(update_book=Body()):
         if book['title'].lower() == update_book['title'].lower():
             BOOKS[i] = update_book
 
+@app.delete('/books/delete_book')
+async def delete_book(delete_book=Body()):
+
+    for i, book in enumerate(BOOKS):
+        if book['title'].lower() == delete_book['title'].lower():
+            BOOKS.pop(i)
+
 
 if __name__ == "__main__":
     import uvicorn
