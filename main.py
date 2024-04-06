@@ -17,6 +17,42 @@ async def read_all_books():
     return BOOKS
 
 
+# get book by title. example of path parameter
+@app.get('/books/{title}')
+async def get_title_books(title: str):
+    book_to_return = list()
+
+    for book in BOOKS:
+        if book.get('title').lower() == title.lower():
+            book_to_return.append(book)
+
+    return book_to_return
+
+
+# example with query parameter
+@app.get('/books/')
+async def get_books_by_query_category(category: str):
+    books_to_return = list()
+
+    for book in BOOKS:
+        if book['category'].lower() == category.lower():
+            books_to_return.append(book)
+
+    return books_to_return
+
+
+# example of path parameter and query parameter
+@app.get('/books/{author}/')
+async def read_books_by_author_category(author: str,category: str):
+
+    books_to_return = list()
+    for book in BOOKS:
+        if book['author'].lower() == author.lower() and book['category'].lower() == category.lower():
+            books_to_return.append(book)
+
+    return books_to_return
+
+
 # example of path parameter
 @app.get('/books/author/{author}')
 async def get_author_books(author: str):
@@ -36,4 +72,5 @@ async def get_author_books(author: str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run('main:app', host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run('main:app', host="127.0.0.1", port=8000, reload=True)
+
