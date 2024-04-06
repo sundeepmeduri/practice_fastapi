@@ -1,0 +1,26 @@
+1. set routes
+
+crud operations:
+read    --> get
+create  --> post
+update  --> put
+delete  --> delete
+
+get examples:
+
+1. simple path
+@app.get('\books')
+def read_books()
+
+2. path parameter
+@app.get('\books\{author}')
+def read_books_by author(author: str)
+
+3. query parameter
+@app.get('\books\')
+def read_books_by_author(category: str)
+
+4. path parameter and query parameter
+@app.get('\books\{author}\')
+def read_books_by_author_category(author: str, category: str)
+
