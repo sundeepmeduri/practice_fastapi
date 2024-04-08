@@ -24,3 +24,6 @@ def read_books_by_author(category: str)
 @app.get('\books\{author}\')
 def read_books_by_author_category(author: str, category: str)
 
+
+-- Validation to path parameter
+-- validation to query parameter
